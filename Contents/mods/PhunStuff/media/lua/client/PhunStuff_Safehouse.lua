@@ -60,7 +60,7 @@ ISDestroyStuffAction["isValid"] = function(self)
         end
 
         if not isOk then
-            PhunTweaks:say("You are too close to a safehouse that you do not belong to")
+            PhunStuff:say("You are too close to a safehouse that you do not belong to")
             return false
         end
 

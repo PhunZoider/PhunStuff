@@ -72,7 +72,7 @@ function PhunStuff:ini()
     self.settings = ModData.getOrCreate(moduleName)
     self.settings.debug = self.settings.debug or true
     self.inied = true
-    self:debug("PhunTweaks inied")
+    self:debug("PhunStuff inied")
 end
 
 function PhunStuff:get()

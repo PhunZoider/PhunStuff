@@ -7,7 +7,7 @@ local itemOverides = {
 
 local tweakRecipees = function()
 
-    local recipeTweaks = PhunTweaks.recipeOverrides
+    local recipeTweaks = PhunStuff.recipeOverrides
     if recipeTweaks == nil or #recipeTweaks == 0 then
         return
     end
@@ -30,7 +30,7 @@ local tweakRecipees = function()
                             player:Say("You cannot craft a car inside a building.")
                             player:getInventory():AddItems("Pearls", item.pearls)
                         end
-                        sendClientCommand("PhunTweaks", "SpawnCar", {
+                        sendClientCommand("PhunStuff", "SpawnCar", {
                             x = player:getX(),
                             y = player:getY(),
                             type = item.type
@@ -44,17 +44,13 @@ local tweakRecipees = function()
             elseif item.fn then
                 _G[item.fn] = item.fn
             end
-            if item.result then
-                -- recipe:setResult("Base.GoldScraps", 1)
-                -- recipe.Result[1].type=item.result
-            end
         end
     end
 end
 
 local tweakItems = function()
 
-    local itemTweaks = PhunTweaks.itemOverrides
+    local itemTweaks = PhunStuff.itemOverrides
 
     for k, v in pairs(itemTweaks) do
         local item = ScriptManager.instance:getItem(k);
