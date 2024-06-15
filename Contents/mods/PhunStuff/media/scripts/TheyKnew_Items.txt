@@ -1,0 +1,80 @@
+module TheyKnew
+{
+	imports
+	{
+		Base
+	}
+	
+	item Zomboxycycline
+    {
+        DisplayCategory 	= Food,
+		Weight				= 0.2,
+        DaysTotallyRotten   = 1,
+		Type				= Drainable,
+        UseDelta			= 0.1,
+		UseWhileEquipped	= FALSE,
+		DisplayName			= Zomboxycycline,
+		Icon				= PillsPainkiller,
+		Tooltip 			= Tooltip_Painkillers,
+		StaticModel 		= PillBottle,
+		WorldStaticModel 	= PillBottleGround,
+		Medical 			= TRUE,
+    }
+	item Zomboxivir
+    {
+        DisplayCategory 	= Food,
+		Weight				= 0.01,
+        Type				= Food,
+		HungerChange 		= +1,
+        DisplayName			= Zomboxivir Ampule,
+        DaysTotallyRotten   = 4,
+        DaysFresh           = 1,
+        Icon				= Zomboxivir,
+		Medical 			= TRUE,
+		CustomContextMenu   = Break_Ampule,
+		EatType				= popcan,
+		OnEat 				= OnEat_Zomboxivir,
+		CustomEatSound 		= BreakAmpule,
+        WorldStaticModel	= Tweezers, 
+    }
+	
+	item MysteriousHazmat 
+	{
+		DisplayCategory 	= Clothing,
+        Type 				= Clothing,
+        DisplayName 		= Mysterious NBC Suit,
+        ClothingItem 		= TheyKnew_MysteriousHazmat,
+        BodyLocation 		= FullSuitHead,
+        Icon 				= MysteriousHazmat,
+        BloodLocation 		= Trousers;Jumper,
+        Icon 				= Hazmatsuit,
+        RunSpeedModifier 	= 0.75,
+        ScratchDefense 		= 25,
+        BiteDefense 		= 25,
+        Insulation 			= 0.65,
+        WindResistance 		= 0.9,
+        WorldStaticModel 	= Hazmat_Ground,
+	}
+	
+	item MysteriousSatchel
+    {
+        DisplayCategory 	= Bag,
+        WeightReduction		= 50,
+        Weight				= 1,
+        Type				= Container,
+        Capacity			= 17,
+        DisplayName			= Tactical Satchel,
+        Icon 				= MysteriousSatchel,
+        CanBeEquipped 		= Back,
+        OpenSound   		= OpenBag,
+        CloseSound   		= CloseBag,
+        PutInSound   		= PutItemInBag,
+        ClothingItem 		= TheyKnew_Satchel,
+        BloodLocation 		= Bag,
+        RunSpeedModifier 	= 0.99,
+        ReplaceInSecondHand = TheyKnew_Satchel_LHand holdingbagleft,
+        ReplaceInPrimaryHand = TheyKnew_Satchel_RHand holdingbagright,
+        WorldStaticModel 	= Satchel_Ground,
+    }
+    
+}
