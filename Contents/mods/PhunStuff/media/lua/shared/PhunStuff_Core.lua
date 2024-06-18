@@ -69,10 +69,8 @@ PhunStuff = {
 }
 
 function PhunStuff:ini()
-    self.settings = ModData.getOrCreate(moduleName)
     self.settings.debug = self.settings.debug or true
     self.inied = true
-    self:debug("PhunStuff inied")
 end
 
 function PhunStuff:get()
@@ -82,10 +80,10 @@ function PhunStuff:get()
     return self
 end
 
-function PhunStuff:debug(msg)
-    local phun = self:get()
-    if phun.settings.debug then
-        print(msg)
+function PhunStuff:debug(...)
+    if self.settings.debug then
+        local args = {...}
+        PhunTools:debug(args)
     end
 end
 
@@ -96,7 +94,4 @@ function PhunStuff:say(message, player, r, g, b, a)
 
     player:setHaloNote(message, r or 255, g or 255, b or 0, a or 300);
 
-    if getDebug() then
-        print(message);
-    end
 end
