@@ -4,11 +4,12 @@ if OnEat_Zomboxivir then
     oldfn = OnEat_Zomboxivir;
     function OnEat_Zomboxivir(food, player, percent)
         if not food:isRotten() then
+            local bodyDamage = player:getBodyDamage();
+            local wasInfected = bodyDamage:getInfectionLevel() > 0;
             oldfn(food, player, percent);
-            local stats = PhunStats:getPlayerData(player);
-            if stats and stats.current then
-                stats.current.ampules = (stats.current.ampules or 0) + 1;
-                stats.total.ampules = (stats.total.ampules or 0) + 1;
+            bodyDamage = player:getBodyDamage();
+            if wasInfected and bodyDamage:getInfectionLevel() == 0 then
+                player:Say(getText("IGUI_ItemSuccessAmpule_" .. ZombRand(1, 4)));
             end
         else
             if isClient() then

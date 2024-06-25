@@ -4,7 +4,7 @@ local starterKit = {
     unemployed = {
         items = "Base.WhiskeyFull(0-2);Base.Corndog(1-4);Base.Bleach;Base.ComicBook",
         weapon = {
-            type = "Base.Pencil"
+            type = "Base.GuitarAcoustic"
         },
         clothing = "Base.Hat_ShowerCap"
     },
@@ -529,7 +529,10 @@ Events.OnNewGame.Add(function(player, square)
 
     local profession = player:getDescriptor():getProfession()
     local items = starterKit[profession] or nil
-    print("Profession: " .. profession)
+    -- print(" -- STARTING NEW TOON --")
+    -- print("Profession: " .. profession)
+    -- PhunTools:printTable(items or {})
+    -- print(" -- END NEW TOON --")
 
     function getQtyFromEntry(entry)
 
@@ -592,7 +595,7 @@ Events.OnNewGame.Add(function(player, square)
 
             if items.bag then
                 local spawnedItem = player:getInventory():AddItem(items.bag.type)
-                if items.bag.contents then
+                if spawnedItem and items.bag.contents then
                     local itemsToAdd = split(items.bag.contents)
                     AddToInv(itemsToAdd, spawnedItem:getItemContainer())
                 end
