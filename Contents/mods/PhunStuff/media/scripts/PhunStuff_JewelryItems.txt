@@ -1,0 +1,25 @@
+module Base
+{
+      item GoldScraps
+      {
+          Weight    	   	= .02,
+          DisplayName     = Gold Scraps,
+          icon 			      = GoldScraps,
+          Type    	     	= Normal,
+      }
+        item SilverScraps
+      {
+          Weight    	   	= .02,
+          DisplayName     = Silver Scraps,
+          icon 		       	= SilverScraps,
+          Type        		= Normal,
+      }
+
+  item GemScrap
+      {
+          Weight    	   	= .01,
+          DisplayName     = Gems,
+          icon 		       	= Gems,
+          Type        		= Normal,
+      }
+}

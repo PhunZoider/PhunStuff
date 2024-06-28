@@ -1,0 +1,41 @@
+module PhunStuff
+{
+  imports
+  {
+    Base
+  }
+
+      recipe Scrap Gold
+    {
+        Necklace_Gold/Necklace_GoldRuby/NecklaceLong_Gold/NoseRing_Gold/NoseStud_Gold/Earring_LoopLrg_Gold/Earring_LoopMed_Gold/Earring_LoopSmall_Gold_Both/Earring_LoopSmall_Gold_Top/Earring_Stud_Gold/Ring_Right_MiddleFinger_Gold/Ring_Left_MiddleFinger_Gold/Ring_Right_RingFinger_Gold/Ring_Left_RingFinger_Gold/WristWatch_Right_ClassicGold/WristWatch_Left_ClassicGold/Bracelet_BangleRightGold/Bracelet_BangleLeftGold/Bracelet_ChainRightGold/Bracelet_ChainLeftGold/BellyButton_DangleGold/BellyButton_RingGold/BellyButton_StudGold/BellyButton_StudGoldDiamond,
+        keep [Recipe.GetItemTypes.Hammer],
+  	   Sound:Hammering,
+       Result:ScrapMetal,
+       Time:100.0,
+       Category:Survivalist,
+       OnCreate: PhunStuffGoldCrafting_OnCreate
+    }
+
+    recipe Scrap Jewels
+    {
+        Necklace_Choker_Sapphire/Necklace_Pearl/Earring_Pearl/Earring_Dangly_Pearl/Necklace_Choker_Diamond/Earring_Stone_Sapphire/Earring_Stone_Emerald/Earring_Stone_Ruby/Earring_Dangly_Sapphire/Earring_Dangly_Emerald/Earring_Dangly_Ruby/Earring_Dangly_Diamond/Necklace_GoldRuby/Necklace_GoldDiamond/NecklaceLong_GoldDiamond/Ring_Right_MiddleFinger_GoldRuby/Ring_Left_MiddleFinger_GoldRuby/Ring_Right_RingFinger_GoldRuby/Ring_Left_RingFinger_GoldRuby/Ring_Right_MiddleFinger_GoldDiamond/Ring_Left_MiddleFinger_GoldDiamond/Ring_Right_RingFinger_GoldDiamond/Ring_Left_RingFinger_GoldDiamond/BellyButton_DangleGoldRuby/BellyButton_RingGoldDiamond/BellyButton_RingGoldRuby/Necklace_SilverSapphire/Necklace_SilverDiamond/NecklaceLong_SilverEmerald/NecklaceLong_SilverSapphire/NecklaceLong_SilverDiamond/Ring_Right_MiddleFinger_SilverDiamond/Ring_Left_MiddleFinger_SilverDiamond/Ring_Right_RingFinger_SilverDiamond/Ring_Left_RingFinger_SilverDiamond/BellyButton_DangleSilverDiamond/BellyButton_RingSilverDiamond/BellyButton_RingSilverRuby/BellyButton_StudSilverDiamond,
+        keep [Recipe.GetItemTypes.Hammer],
+  	   Sound:Hammering,
+       Result:ScrapMetal,
+       Time:100.0,
+       Category:Survivalist,
+       OnCreate: PhunStuffGemCrafting_OnCreate
+    }
+
+    recipe Scrap Silver
+    {
+       Locket/Necklace_Silver/Necklace_SilverCrucifix/NoseRing_Silver/NoseStud_Silver/Earring_LoopLrg_Silver/Earring_LoopMed_Silver/Earring_LoopSmall_Silver_Both/Earring_LoopSmall_Silver_Top/Earring_Stud_Silver/Ring_Right_MiddleFinger_Silver/Ring_Left_MiddleFinger_Silver/Ring_Right_RingFinger_Silver/Ring_Left_RingFinger_Silver/Bracelet_BangleRightSilver/Bracelet_BangleLeftSilver/Bracelet_ChainRightSilver/Bracelet_ChainLeftSilver/NecklaceLong_Silver/BellyButton_DangleSilver/BellyButton_RingSilver/BellyButton_StudSilver,
+       keep [Recipe.GetItemTypes.Hammer],
+  	   Sound:Hammering,
+       Time:100.0,
+       Category:Survivalist,
+       Result:ScrapMetal,
+       OnCreate: PhunStuffSilverCrafting_OnCreate
+    }
+
+}
