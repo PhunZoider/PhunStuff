@@ -71,3 +71,7 @@ end
 Events.OnGameBoot.Add(tweakItems)
 Events.OnGameStart.Add(tweakRecipees)
 
+-- Events.OnFillContainer.Add(function(roomtype, containertype, container)
+--     print("OnFillContainer: " .. tostring(roomtype) .. " " .. tostring(containertype))
+-- end)
+

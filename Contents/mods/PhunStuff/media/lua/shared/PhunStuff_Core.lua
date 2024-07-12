@@ -2,9 +2,9 @@ local oldHordeNightTick = HN_CheckSpawnHordeZombies
 local phunStats = nil
 
 if oldHordeNightTick ~= nil then
-
+    print("1")
     local OverwrittenHordeNightTick = function()
-
+        print("2")
         local player = getPlayer()
 
         if player == nil then
@@ -20,7 +20,7 @@ if oldHordeNightTick ~= nil then
     end
 
     if HN_CheckSpawnHordeZombies then
-
+        print("3")
         Events.OnTick.Remove(HN_CheckSpawnHordeZombies);
         Events.OnTick.Add(OverwrittenHordeNightTick);
 
