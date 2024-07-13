@@ -269,7 +269,7 @@ local starterKit = {
             contents = "Base.BeerBottle(0-2);Base.Corndog(1-2);Base.WaterBottleFull"
         },
         weapon = {
-            type = "AuthenticZClothing.AuthenticCricketBat",
+            type = "SOMW.CricketBat",
             isTwoHanded = true
         }
     },
