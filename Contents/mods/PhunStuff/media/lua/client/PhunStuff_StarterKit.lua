@@ -529,10 +529,6 @@ Events.OnNewGame.Add(function(player, square)
 
     local profession = player:getDescriptor():getProfession()
     local items = starterKit[profession] or nil
-    -- print(" -- STARTING NEW TOON --")
-    -- print("Profession: " .. profession)
-    -- PhunTools:printTable(items or {})
-    -- print(" -- END NEW TOON --")
 
     function getQtyFromEntry(entry)
 
