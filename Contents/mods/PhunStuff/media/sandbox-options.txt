@@ -1,0 +1,10 @@
+VERSION = 1,
+
+option PhunStuff.FixBanditVoidSpawning
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStauff,
+    translation = PhunStauffFixBanditVoidSpawning
+}
+
