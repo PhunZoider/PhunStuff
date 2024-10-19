@@ -4,7 +4,16 @@ option PhunStuff.FixBanditVoidSpawning
 { 
     type = boolean,
     default = true,
-    page = PhunStauff,
-    translation = PhunStauffFixBanditVoidSpawning
+    page = PhunStuff,
+    translation = PhunStuffFixBanditVoidSpawning
 }
+
+option PhunStuff.FixCedarHillRadioText
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffFixCedarHillRadioText
+}
+
 

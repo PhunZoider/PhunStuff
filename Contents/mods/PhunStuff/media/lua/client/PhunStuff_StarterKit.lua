@@ -233,7 +233,7 @@ local starterKit = {
 
     mechanics = {
         bag = {
-            type = "Base.Bag_JanitorToolbox",
+            type = "Base.Toolbox",
             contents = "Base.WaterBottleFull;Base.CarBattery1;Base.BeerCan(1-4);Base.Burger(1-2)",
             location = "offhand"
         },
@@ -585,6 +585,51 @@ Events.OnNewGame.Add(function(player, square)
             end
         end
     end
+
+    -- -- hard coded default/fallback list for when no matching profession is found
+    -- local defaultItems = {"Base.Hammer"}
+
+    -- -- list from json file
+    -- local professions = {
+    --     constructionworker = {"Base.Nails", "Base.Plank"}, -- array
+    --     carpenter = {"Base.Nails", {"Base.Plank", "Base.Hammer"}}, -- array with table
+    --     plumber = {"Base.PipeWrench", {
+    --         type = "Base.Pipe",
+    --         qty = 2 -- table with qty
+    --     }}
+    -- }
+    -- -- get the items for the profession or fallback to default
+    -- local chosen = professions[profession] or defaultItems
+
+    -- -- loop through the items
+    -- for _, v in ipairs(chosen) do
+
+    --     local itemType = nil
+    --     local itemQty = 1
+
+    --     -- if item is a table:
+    --     if type(v) == "table" then
+    --         -- choose a random item from the table
+    --         local item = v[ZombRand(#v) + 1]
+
+    --         -- if that item is also a table, get the type and qty
+    --         if type(item) == "table" then
+    --             itemType = item.type
+    --             itemQty = item.qty or 1
+    --         elseif type(item) == "string" then
+    --             itemType = item
+    --         end
+    --     elseif type(v) == "string" then
+    --         itemType = v
+    --     end
+
+    --     if itemType then
+    --         for i = 1, itemQty do
+    --             -- add to container
+    --             container:AddItem(itemType)
+    --         end
+    --     end
+    -- end
 
     if items then
         if type(items) == "table" then
