@@ -101,5 +101,39 @@ Events.OnGameStart.Add(function()
 
     end
 
+    if WaterPipe and WaterPipe.loadPipe then
+        -- load the pipe
+        function WaterPipe.loadPipe(pipeObject)
+            if not pipeObject or not pipeObject:getSquare() then
+                return
+            end
+            local square = pipeObject:getSquare()
+            local pipe = nil;
+            -- check if we don't already have this pipe in our map (the streaming of the map make the gridsquare to reload every time)
+            for i, v in ipairs(WaterPipe.pipes) do
+                if v.x == square:getX() and v.y == square:getY() and v.z == square:getZ() then
+                    pipe = v;
+                    break
+                end
+            end
+            if not pipe then -- if we don't have the pipe, it's basically when you load your saved game the first time
+                pipe = {};
+                pipe.x = square:getX();
+                pipe.y = square:getY();
+                pipe.z = square:getZ();
+                pipe.pipeType = pipeObject:getModData()["pipeType"];
+                pipe.infinite = pipeObject:getModData()["infinite"];
+
+                table.insert(WaterPipe.pipes, pipe);
+                table.insert(WaterPipe.modData.waterPipes.pipes, pipe);
+
+            else
+                pipeObject:getModData()["infinite"] = pipe.infinite;
+                pipeObject:transmitModData();
+
+            end
+        end
+    end
+
 end)
 
