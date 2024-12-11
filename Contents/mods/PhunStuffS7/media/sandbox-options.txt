@@ -16,4 +16,23 @@ option PhunStuff.FixCedarHillRadioText
     translation = PhunStuffFixCedarHillRadioText
 }
 
+option PhunStuff.ExtraItemRemoverPercent
+{ 
+    type = integer, 
+    default = 0, 
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffExtraItemRemoverPercent
+}
+
+option PhunStuff.ExtraItemRemoverKeys
+{ 
+    type = string,
+    default = Dance Magazine|Vinyl |Portable player|Boombox|Cassette|Game Boy|GameBoy|Atari|GameGear|Genesis|Sega|Nintendo,
+    page = PhunStuff, 
+    translation = PhunStuffExtraItemRemoverPercent
+}
+
+
 

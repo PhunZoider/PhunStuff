@@ -5,4 +5,37 @@ IGUI_EN = {
 	IGUI_ItemSuccessAmpule_2 = "That has cleared my head"
 	IGUI_ItemSuccessAmpule_3 = "Whew!"
 	IGUI_ItemSuccessAmpule_4 = "Smells like... teen spirit?"
+	IGUI_PhunStuff_WelcomeTitle0 = "Cover"
+	IGUI_PhunStuff_WelcomeTitle1 = "Page 1: The Hospital"
+	IGUI_PhunStuff_WelcomeTitle2 = "Page 2: First Loot!"
+	IGUI_PhunStuff_WelcomeTitle3 = "Page 3: The Escape"
+	IGUI_PhunStuff_WelcomeTitle4 = "Page 4: Clues"
+	IGUI_PhunStuff_WelcomeTitle5 = "Page 5: Sprinters"
+	IGUI_PhunStuff_WelcomeTitle6 = "Page 6: A Cure?"
+	IGUI_PhunStuff_WelcomeTitle7 = "Page 7: Shopping"
+	IGUI_PhunStuff_WelcomeTitle8 = "Page 8: Safe Space"
+	IGUI_PhunStuff_WelcomeTitle9 = "Page 9: Car Claims"
+	IGUI_PhunStuff_WelcomeTitle10 = "Page 10: Solar"
+	IGUI_PhunStuff_WelcomeTitle11 = "Page 11: Notes"
+
+	IGUI_PhunStuff_WelcomeText0 = "This discarded scrap book may hold important clues!"
+	IGUI_PhunStuff_WelcomeText1 = "You have woken in what appears to be an underground, hidden hopital room."
+	IGUI_PhunStuff_WelcomeText2 = "Grab your clothes and loot from the side table"
+	IGUI_PhunStuff_WelcomeText3 = "The clock tells you the time of day in case you want to wait out nightfall. When ready, exit through the vent and choose the vent you want to come out of."
+	IGUI_PhunStuff_WelcomeText4 = "You can only spawn at a vents! That means you will need to find more vents or craft your own to expand your network of spawn points. Some zeds can drop clues that may reveal an area on your map that points to another vent"
+	IGUI_PhunStuff_WelcomeText5 = "Depending on where you are and how dark it is, you may find sprinters! These are easy to identify as they are skeletons. Note that they will only run if it gets dark enough (nightfall or dense fog). Best to carry a flashlight at all times"
+	IGUI_PhunStuff_WelcomeText6 = "Hazmat zeds can drop Ampules which will remove the Knox virus. Trouble is, it will go off and become ineffectual within a couple days. Best to keep refridgerated or frozen!"
+	IGUI_PhunStuff_WelcomeText7 = "Almost everything in game can be purchased at special vending machines across the map. These machines take a variety of currency (most which drop from zeds) and let you buy things from cars to weapons to boosts and perks"
+	IGUI_PhunStuff_WelcomeText8 = "The Michelles Crafts vending machine sells a special Repellent Paint which allows you to create a Safehouse from scratch or to extend an existing Safehouse"
+	IGUI_PhunStuff_WelcomeText9 = "You can claim up to 5 cars. A claim prevents others from taking or looting it. In order to claim, you need to craft a Mysterious Orb"
+	IGUI_PhunStuff_WelcomeText10 = "Keep an eye out for solar panels and related parts. They are critical for power generation after gas stations run dry!"
+	IGUI_PhunStuff_WelcomeText11 = "Join the discord! Craft a Journal to preserve most of your skills between spawns!"
+	
+	IGUI_PhunStuff_WelcomeClick11 = "https://discord.gg/v2USyAtP6q"
+	
+
+
+
+
+
 }

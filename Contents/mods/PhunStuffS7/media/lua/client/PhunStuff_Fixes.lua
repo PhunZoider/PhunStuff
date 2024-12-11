@@ -135,5 +135,9 @@ Events.OnGameStart.Add(function()
         end
     end
 
+    -- Events.OnFillContainer.Add(function(roomtype, containertype, container)
+    --     print("onFillContainer ", tostring(roomtype) .. " " .. tostring(containertype) .. " " .. tostring(container))
+    -- end);
+
 end)
 
