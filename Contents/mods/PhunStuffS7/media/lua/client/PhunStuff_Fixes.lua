@@ -141,3 +141,41 @@ Events.OnGameStart.Add(function()
 
 end)
 
+if AtosShared then
+    if isClient() then
+        Events.OnPreFillWorldObjectContextMenu.Add(function(playerObj, context, worldobjects)
+            if isAdmin() then
+                context:addOption("PhunStuff: Remove Rads", worldobjects, function()
+                    local p = player and getSpecificPlayer(playerObj) or getPlayer()
+                    AtosClient:setRadiation(0)
+                end)
+            end
+        end);
+    end
+end
+
+if SandboxVars.PhunStuff.FixEmptyContainers then
+    Events.OnRefreshInventoryWindowContainers.Add(function(inventoryPage, state)
+        if state == "end" then
+            local containerObj;
+            for i, v in ipairs(inventoryPage.backpacks) do
+                if v.inventory and v.inventory.getParent then
+                    containerObj = v.inventory:getParent();
+                    if instanceof(containerObj, "IsoObject") then
+                        local container = containerObj:getContainer()
+                        if container then
+                            local isExplored = container and container.isExplored and container:isExplored();
+                            local isHasBeenLooted = container and container.isHasBeenLooted and
+                                                        container:isHasBeenLooted();
+                            if container:isEmpty() and isHasBeenLooted == false then
+                                print("PhunStuff:FixEmptyContainers: Relooting container")
+                                -- assert this should be relooted?
+                                container:setHasBeenLooted(true)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end);
+end

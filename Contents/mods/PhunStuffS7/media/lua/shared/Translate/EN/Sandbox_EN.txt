@@ -1,0 +1,19 @@
+Sandbox_EN = {
+    Sandbox_PhunStuff = "PhunStuff"
+
+    Sandbox_FixBanditVoidSpawning = "Prevent Bandits from Spawning in Void"
+    Sandbox_FixBanditVoidSpawning_tooltip = "Probably fixed by now. Only use with bandits mod"
+
+    Sandbox_FixCedarHillRadioText = "Fix Cedar Hill Radio Text"
+    Sandbox_FixCedarHillRadioText_tooltip = "Dont even use Cedar Hill anymore so probably false it"
+
+    Sandbox_ExtraItemRemoverPercent = "Extra ItemRemover Percent"
+    Sandbox_ExtraItemRemoverPercent_tooltip = "The chance that something from the next list will be removed from a container"
+
+    Sandbox_ExtraItemRemoverKeys = "Items to remove"
+    Sandbox_ExtraItemRemoverKeys_tooltip = "A pipe separated list of items to check against"
+
+    Sandbox_FixEmptyContainers = "Fix to prevent empty orphaned containers"
+    Sandbox_FixEmptyContainers_tooltip = "Experimental attempt to cause empty refilled containers to still respawn"
+
+}

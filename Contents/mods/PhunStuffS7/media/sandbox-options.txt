@@ -34,5 +34,12 @@ option PhunStuff.ExtraItemRemoverKeys
     translation = PhunStuffExtraItemRemoverPercent
 }
 
+option PhunStuff.FixEmptyContainers
+{ 
+    type = boolean,
+    default = false,
+    page = PhunStuff,
+    translation = PhunStuffFixEmptyContainers
+}
 
 
