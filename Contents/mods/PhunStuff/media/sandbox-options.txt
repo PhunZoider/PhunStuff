@@ -1,0 +1,109 @@
+VERSION = 1,
+
+option PhunStuff.FixBanditVoidSpawning
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffFixBanditVoidSpawning
+}
+
+option PhunStuff.FixCedarHillRadioText
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffFixCedarHillRadioText
+}
+
+option PhunStuff.ExtraItemRemoverPercent
+{ 
+    type = integer, 
+    default = 0, 
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffExtraItemRemoverPercent
+}
+
+option PhunStuff.ExtraItemRemoverKeys
+{ 
+    type = string,
+    default = Dance Magazine|Vinyl |Portable player|Boombox|Cassette|Game Boy|GameBoy|Atari|GameGear|Genesis|Sega|Nintendo,
+    page = PhunStuff, 
+    translation = PhunStuffExtraItemRemoverPercent
+}
+
+option PhunStuff.TicsUdderlyCompatabilityFix
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffTicsUdderlyCompatabilityFix
+}
+
+option PhunStuff.TicsPlayerConnectFix
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffTicsUdderlyCompatabilityFix
+}
+
+option PhunStuff.FixEmptyContainers
+{ 
+    type = boolean,
+    default = false,
+    page = PhunStuff,
+    translation = PhunStuffFixEmptyContainers
+}
+
+option PhunStuff.ATAChangeDistribution
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuffATAChangeDistribution
+}
+
+option PhunStuff.ATATrailerTSMegaSpawnChance
+{ 
+    type = integer, 
+    default = 15, 
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffATATrailerTSMegaSpawnChance
+}
+
+option PhunStuff.ATAPetyarbuiltSpawnChance
+{ 
+    type = integer, 
+    default = 5,
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffATAPetyarbuiltSpawnChance
+}
+
+option PhunStuff.ATAPPetyarbuiltSleeperSpawnChance
+{ 
+    type = integer, 
+    default = 5, 
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffATAPPetyarbuiltSleeperSpawnChance
+}
+
+option PhunStuff.ATAPPetyarbuiltSleeperLongSpawnChance
+{ 
+    type = integer, 
+    default = 5, 
+    min = 0,
+    max = 100,
+    page = PhunStuff, 
+    translation = PhunStuffATAPPetyarbuiltSleeperLongSpawnChance
+}
+
+

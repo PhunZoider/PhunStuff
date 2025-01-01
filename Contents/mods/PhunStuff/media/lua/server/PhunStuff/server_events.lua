@@ -1,18 +1,13 @@
-if not isServer() then
+if isClient() then
     return
 end
 
-local PhunStuff = PhunStuff
+local PS = PhunStuff
 
-if PhunTools and PhunTools.RunOnceWhenServerEmpties then
-    PhunTools:RunOnceWhenServerEmpties("PhunStuff", function()
-        PhunStuff:logMemoryStuff()
-    end)
-end
 Events.OnClientCommand.Add(function(module, command, playerObj, arguments)
     if module == "PhunStuff" then
         if command == "mem" then
-            PhunStuff:logMemoryStuff()
+            PS:logMemoryStuff()
         end
     end
 end)
@@ -28,4 +23,3 @@ if SapphOnEat_CheckNaN then
         end
     end
 end
-

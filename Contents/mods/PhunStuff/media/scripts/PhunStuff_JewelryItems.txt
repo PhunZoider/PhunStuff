@@ -15,11 +15,12 @@ module Base
           Type        		= Normal,
       }
 
-  item GemScrap
+    item GemScrap
       {
           Weight    	   	= .01,
           DisplayName     = Gems,
           icon 		       	= Gems,
           Type        		= Normal,
       }
+
 }

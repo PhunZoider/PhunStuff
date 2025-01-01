@@ -1,3 +1,33 @@
+print("==================================")
+print("CLIENT MAIN LOADING")
+print("==================================")
+if isServer() then
+    return
+end
+local PS = PhunStuff
+
+-- BANDIT SPAWNING IN VOID
+
+if PS.settings.FixBanditVoidSpawning then
+    local BanditScheduler = BanditScheduler
+    if BanditScheduler then
+        local oldfn = BanditScheduler.GenerateSpawnPoint
+
+        function BanditScheduler.GenerateSpawnPoint(player, d)
+
+            local data = player:getModData()
+            if data and data.PhunZones and data.PhunZones.bandits == false then
+                return false
+            end
+
+            return oldfn(player, d)
+
+        end
+    end
+end
+
+-- SAFEHOUSE BUFFER
+
 local phunDestroyStuffAction = ISDestroyStuffAction["isValid"];
 
 local safehouseDistance = 15
@@ -69,3 +99,13 @@ ISDestroyStuffAction["isValid"] = function(self)
     return result
 
 end
+
+-- Sweeper fix
+if CF8K then
+    if CF8K.Sweeper then
+        function CF8K.Sweeper:allowAutoRemoveBtn()
+            return true
+        end
+    end
+end
+
