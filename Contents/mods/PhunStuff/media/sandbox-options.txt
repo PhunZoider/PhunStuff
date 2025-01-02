@@ -53,7 +53,7 @@ option PhunStuff.TicsPlayerConnectFix
 option PhunStuff.FixEmptyContainers
 { 
     type = boolean,
-    default = false,
+    default = true,
     page = PhunStuff,
     translation = PhunStuffFixEmptyContainers
 }
