@@ -3,3 +3,5 @@ name=PhunStuff
 id=phunstuff
 description=Phun Tweaks and experiments for PhunZoid server
 poster=poster.png
+pack=phunstuff
+tiledef=phunstuff 1419

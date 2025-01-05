@@ -1,6 +1,9 @@
 PhunStuff = {
     name = "PhunStuff",
     inied = false,
+    commands = {
+        refillContainer = "PhunStuffRefillContainer"
+    },
     recipeOverrides = {},
     events = {},
     itemOverrides = {

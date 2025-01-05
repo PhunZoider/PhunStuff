@@ -76,10 +76,6 @@ for i = 0, allRecipes:size() - 1 do
 
 end
 
-if isClient() then
-    return
-end
-
 -- MACHINES 
 -- if Recipe.OnGiveXP.ElectricalTrain then
 
@@ -127,54 +123,141 @@ local function removeItemsFromContainer(_container, chance)
     if not _container or not chance or chance <= 0 then
         return;
     end
+    print("-------", "FILLING CONTAINER", "-------")
+    -- _container:getModData().refreshed = getGameTime():getWorldAgeHours();
 
     local containerItems = _container:getItems()
     if containerItems then
         for i = containerItems:size() - 1, 0, -1 do
             local item = containerItems:get(i);
             if item then
-                local itemName = item:getName()
+                local itemName = item.getName and item:getName() or ""
                 if string.find(itemName, PS.settings.ExtraItemRemoverKeys) then
                     if ZombRand(100) <= chance then
+                        -- getPlayer():Say("Removing item: " .. itemName)
                         print("Removing item: " .. itemName)
                         _container:Remove(item)
+                    else
+                        print("Keeping item: " .. itemName)
                     end
                 end
             end
         end
     end
+
 end
 
 local function checkRemoveItems(_iSInventoryPage)
-    if (PS.settings.ExtraItemRemoverPercent or 0) == 0 then
-        return;
-    end
-    local containerObj;
-    for i, v in ipairs(_iSInventoryPage.backpacks) do
-        if v.inventory:getVehiclePart() then
-            containerObj = v.inventory:getVehiclePart();
-            if not containerObj:getModData().hadItemsRemoved and instanceof(containerObj, "VehiclePart") and
-                containerObj:getItemContainer() then
-                containerObj:getModData().hadItemsRemoved = true;
-                removeItemsFromContainer(containerObj:getItemContainer(), PS.settings.ExtraItemRemoverPercent)
-            end
-        end
-    end
+    PS:checkRemoveItems(_iSInventoryPage)
+    -- if (PS.settings.ExtraItemRemoverPercent or 0) == 0 then
+    --     return;
+    -- end
+
+    -- for i, v in ipairs(_iSInventoryPage.backpacks) do
+    --     -- if v.inventory:getVehiclePart() then
+    --     --    containerObj = v.inventory:getVehiclePart();
+    --     local container
+    --     if v.inventory:getParent() then
+    --         container = v.inventory:getParent()
+
+    --         if instanceof(container, "IsoDeadBody") or not (container:getContainer() or container:getItemContainer()) then
+    --             container = nil
+    --         end
+
+    --     end
+    --     if v.inventory:getVehiclePart() then
+    --         container = v.inventory:getVehiclePart();
+    --     end
+    --     if container:getContainer() or container:getItemContainer() then
+
+    --         if container:isEmpty() then
+    --             local isExplored = container and container.isExplored and container:isExplored();
+    --             local isHasBeenLooted = container and container.isHasBeenLooted and container:isHasBeenLooted();
+    --             local lastFilled = container:getModData().restocked
+
+    --             if isHasBeenLooted == false then
+    --                 if isAdmin() then
+    --                     getSpecificPlayer(0):Say("Empty Container that hasnt been looted. Relooting")
+    --                 end
+    --                 -- assert this should be relooted?
+    --                 container:setHasBeenLooted(true)
+    --             end
+    --             if lastFilled and lastFilled + 24 < getGameTime():getWorldAgeHours() then
+    --                 ItemPickerJava.fillContainer(container, getPlayer())
+    --             end
+    --         elseif not container:getModData().hadItemsRemoved then
+    --             container:getModData().hadItemsRemoved = true;
+    --             removeItemsFromContainer(container, PS.settings.ExtraItemRemoverPercent)
+    --         end
+
+    --         -- if not containerObj:getModData().lastEmpty then
+    --         --     containerObj:getModData().lastEmpty = getGameTime():getWorldAgeHours();
+    --         -- elseif containerObj:getModData().refreshed and containerObj:getModData().refreshed + 24 <
+    --         --     getGameTime():getWorldAgeHours() then
+    --         --     ItemPickerJava.fillContainer(containerObj, getPlayer())
+    --         -- end
+    --         -- print("Container time = " .. tostring(container:getModData().restocked))
+    --         -- if not container:getModData().hadItemsRemoved and container:getItemContainer() then
+    --         --     container:getModData().hadItemsRemoved = true;
+    --         --     removeItemsFromContainer(container:getItemContainer(), PS.settings.ExtraItemRemoverPercent)
+    --         -- end
+    --     end
+    --     -- end
+    -- end
 end
 
 local function checkRemoveItemsOnRefreshEnd(_iSInventoryPage, _state)
     if _state == "end" then
+        print("-------\nREFRESHING CONTAINER\n-------")
         checkRemoveItems(_iSInventoryPage);
     end
 end
+
 local function removeItemsOnFill(_roomtype, _containertype, _container)
+    print("-------\nFILLING CONTAINER\n-------")
+    if _container and _container.getModData then
+        _container:getModData().restocked = getGameTime():getWorldAgeHours();
+        print("RESTOCKING CONTAINER " .. _container:getModData().restocked)
+    end
+
     if (PS.settings.ExtraItemRemoverPercent or 0) > 0 then
         removeItemsFromContainer(_container, PS.settings.ExtraItemRemoverPercent)
     end
 end
 
-Events.OnRefreshInventoryWindowContainers.Add(checkRemoveItemsOnRefreshEnd);
-Events.OnFillContainer.Add(removeItemsOnFill);
+-- Evemts.OnServerCommand.Add(function(module, command, arguments)
+--     if module == "PhunStuff" then
+--         if command == "empty" then
+--             print("** Emptying container")
+--             -- local loot = getPlayerLoot(player:getPlayerNum())
+--             -- local containers = loot.inventoryPane.inventoryPage.backpacks
+--             -- local itemList = ArrayList.new();
+--             -- for k, v in pairs(containers) do
+--             --     local container = v.inventory
+--             --     if container then
+--             --         for k, v in pairs(radioactiveItems) do
+--             --             local items = container:getItemsFromType(k)
+--             --             if items:size() > 0 then
+--             --                 if not radiatedItems[k] then
+--             --                     radiatedItems[k] = {
+--             --                         count = 0,
+--             --                         level = 0
+--             --                     }
+--             --                 end
+--             --                 radiatedItems[k].count = radiatedItems[k].count + items:size()
+--             --                 radiatedItems[k].level = radiatedItems[k].level + (items:size() * v)
+--             --                 radiatedLevels = radiatedLevels + (items:size() * v)
+--             --             end
+--             --         end
+--             --     end
+--             -- end
+--         end
+--     end
+-- end)
+
+if isClient() then
+    return
+end
 
 local itemOverides = {
     ["Base.GoldBar"] = {
@@ -183,9 +266,9 @@ local itemOverides = {
     }
 }
 
-local tweakRecipees = function()
+function PS:tweakRecipees()
 
-    local recipeTweaks = PhunStuff.recipeOverrides
+    local recipeTweaks = self.recipeOverrides
     if recipeTweaks == nil or #recipeTweaks == 0 then
         return
     end
@@ -193,7 +276,7 @@ local tweakRecipees = function()
     local recipes = getScriptManager():getAllRecipes()
     for i = 1, recipes:size() do
         local recipe = recipes:get(i - 1)
-        if recipeTweaks[recipe:getName()] then
+        if recipe and recipe.getName and recipeTweaks[recipe:getName()] then
             local item = recipeTweaks[recipe:getName()]
             if item.disabled then
                 print("Disabling recipe: " .. recipe:getName())
@@ -226,7 +309,7 @@ local tweakRecipees = function()
     end
 end
 
-local tweakItems = function()
+function PS:tweakItems()
 
     local itemTweaks = PhunStuff.itemOverrides
 
@@ -244,7 +327,4 @@ local tweakItems = function()
         end
     end
 end
-
-Events.OnGameBoot.Add(tweakItems)
-Events.OnGameStart.Add(tweakRecipees)
 

@@ -22,5 +22,12 @@ module Base
           icon 		       	= Gems,
           Type        		= Normal,
       }
-
+	item StairsOutSign
+	{
+		Weight	=	0.1,	
+		Type	=	Moveable,
+		WorldObjectSprite =	phunstuff_01_0,
+		DisplayName	=	Stairs Out Sign,
+		Icon	=	Paper,
+	}
 }

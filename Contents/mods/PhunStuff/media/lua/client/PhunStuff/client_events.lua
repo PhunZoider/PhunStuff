@@ -139,32 +139,40 @@ Events.OnGameStart.Add(function()
 
 end)
 
-if PS.settings.FixEmptyContainers then
-    Events.OnRefreshInventoryWindowContainers.Add(function(inventoryPage, state)
-        if state == "end" then
-            local containerObj;
-            for i, v in ipairs(inventoryPage.backpacks) do
-                if v.inventory and v.inventory.getParent then
-                    containerObj = v.inventory:getParent();
-                    if instanceof(containerObj, "IsoObject") then
-                        local container = containerObj:getContainer()
-                        if container then
-                            local isExplored = container and container.isExplored and container:isExplored();
-                            local isHasBeenLooted = container and container.isHasBeenLooted and
-                                                        container:isHasBeenLooted();
-                            if container:isEmpty() and isHasBeenLooted == false then
-                                print("PhunStuff:FixEmptyContainers: Relooting container")
-                                -- assert this should be relooted?
-                                container:setHasBeenLooted(true)
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end);
-end
-
+-- if PS.settings.FixEmptyContainers then
+-- Events.OnRefreshInventoryWindowContainers.Add(function(inventoryPage, state)
+--     if state == "end" then
+--         local containerObj;
+--         for i, v in ipairs(inventoryPage.backpacks) do
+--             if v.inventory and v.inventory.getParent then
+--                 containerObj = v.inventory:getParent();
+--                 if instanceof(containerObj, "IsoObject") then
+--                     local container = containerObj:getContainer()
+--                     if container then
+--                         local isExplored = container and container.isExplored and container:isExplored();
+--                         local isHasBeenLooted = container and container.isHasBeenLooted and container:isHasBeenLooted();
+--                         if container:isEmpty() and isHasBeenLooted == false then
+--                             if isAdmin() then
+--                                 getSpecificPlayer(0):Say("Empty Container that hasnt been looted. Relooting")
+--                             end
+--                             -- assert this should be relooted?
+--                             container:setHasBeenLooted(true)
+--                         elseif not containerObj:getModData().hadItemsRemoved and containerObj:getItemContainer() then
+--                             containerObj:getModData().hadItemsRemoved = true;
+--                             removeItemsFromContainer(containerObj:getItemContainer(), PS.settings.ExtraItemRemoverPercent)
+--                         end
+--                     end
+--                 end
+--             end
+--         end
+--     end
+-- end);
+-- end
+Events.OnRefreshInventoryWindowContainers.Add(function(page, state)
+    if state == "end" then
+        PS:checkRemoveItems(page)
+    end
+end);
 Events.OnInitGlobalModData.Add(function()
     local repeatAfterMe = ""
 

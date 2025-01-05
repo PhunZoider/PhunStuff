@@ -16,6 +16,16 @@ option PhunStuff.FixCedarHillRadioText
     translation = PhunStuffFixCedarHillRadioText
 }
 
+option PhunStuff.MaxGameHoursForEmptyContainer
+{ 
+    type = integer, 
+    default = 72, 
+    min = 0,
+    max = 99999,
+    page = PhunStuff, 
+    translation = PhunStuff_MaxGameHoursForEmptyContainer
+}
+
 option PhunStuff.ExtraItemRemoverPercent
 { 
     type = integer, 
@@ -29,7 +39,7 @@ option PhunStuff.ExtraItemRemoverPercent
 option PhunStuff.ExtraItemRemoverKeys
 { 
     type = string,
-    default = Dance Magazine|Vinyl |Portable player|Boombox|Cassette|Game Boy|GameBoy|Atari|GameGear|Genesis|Sega|Nintendo,
+    default = DUNNO=1,
     page = PhunStuff, 
     translation = PhunStuffExtraItemRemoverPercent
 }
