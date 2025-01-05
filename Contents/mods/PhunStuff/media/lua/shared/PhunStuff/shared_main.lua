@@ -55,6 +55,20 @@ if oldHordeNightTick ~= nil then
 
 end
 
+if WaterDispenser and WaterDispenser.transform then
+    function WaterDispenser:transform(type)
+        local objectInfo = WaterDispenser.GetObjectInfo(self.isoObject);
+        if objectInfo == nil then
+            return;
+        end
+        self.isoObject:getModData().waterDispenserInfo = objectInfo; -- save info for the disabler mod
+        self.isoObject:setSpriteFromName(WaterDispenser.ObjectTypes[type][objectInfo.facing]);
+        if isServer() then
+            self.isoObject:transmitUpdatedSpriteToClients();
+        end
+    end
+end
+
 local itemsToReduceFrequencyOf = {}
 
 function PS:refillContainer(player, args)
@@ -97,7 +111,7 @@ function PS:refreshItemsToReduce()
 
     local lookingFor = {
         ["pkmncards."] = 80,
-        ["Book"] = 25,
+        ["Book"] = 45,
         ["Plushie_"] = 50,
         ["Trolly"] = 90,
         ["Cart"] = 90,
