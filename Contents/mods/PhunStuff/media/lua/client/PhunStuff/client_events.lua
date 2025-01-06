@@ -169,7 +169,7 @@ end)
 -- end);
 -- end
 Events.OnRefreshInventoryWindowContainers.Add(function(page, state)
-    if state == "end" then
+    if state == "end" and PS.settings.FixEmptyContainers then
         PS:checkRemoveItems(page)
     end
 end);

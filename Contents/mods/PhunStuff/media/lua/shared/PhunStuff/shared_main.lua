@@ -197,16 +197,16 @@ end
 function PS:removeItemsFromContainer(container)
     local items = container and container.getItems and container:getItems()
     if items and items:size() > 0 then
-        print("-------", "FILLING CONTAINER", "-------")
+        -- print("-------", "FILLING CONTAINER", "-------")
         for i = items:size() - 1, 0, -1 do
             local item = items:get(i)
             if item then
-                print(item:getFullType())
+                -- print(item:getFullType())
                 local chance = itemsToReduceFrequencyOf[item:getFullType()] or 0
                 if chance > 0 then
                     local rand = ZombRand(100)
-                    print(" - checking " .. item:getFullType() .. " with chance " .. tostring(chance) .. " and got " ..
-                              tostring(rand))
+                    -- print(" - checking " .. item:getFullType() .. " with chance " .. tostring(chance) .. " and got " ..
+                    --          tostring(rand))
                     if rand < chance then
                         container:Remove(item)
                         print(" - removed extra item " .. item:getFullType())

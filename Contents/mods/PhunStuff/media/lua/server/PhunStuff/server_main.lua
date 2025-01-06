@@ -43,11 +43,12 @@ if OnEat_Alcohol then
         -- ALCOHOLIC TRAIT
         -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
         -- print("DT Logger: DTtimeSinceLastDrink value is " .. player:getModData().DTtimeSinceLastDrink);
-        player:getModData().DTalcoholicTrait = player:getModData().DTalcoholicTrait - (food:getHungerChange() * 1000) *
-                                                   -1;
-        player:getModData().DTalcoholicTrait = player:getModData().DTalcoholicTrait - (food:getThirstChange() * 1000) *
-                                                   -1;
-        player:getModData().DTalcoholicTrait = player:getModData().DTalcoholicTrait - (food:getAlcoholPower() * 100)
+        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+                                                   (food:getHungerChange() * 1000) * -1;
+        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+                                                   (food:getThirstChange() * 1000) * -1;
+        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+                                                   (food:getAlcoholPower() * 100)
         -- print("Alcohol power for: " .. food:getDisplayName() .. " is: " .. (food:getAlcoholPower() * 100))
         player:getModData().DTtimeSinceLastDrink = 0;
         -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
@@ -152,7 +153,7 @@ local function removeItemsFromContainer(_container, chance)
     if not _container or not chance or chance <= 0 then
         return;
     end
-    print("-------", "FILLING CONTAINER", "-------")
+    -- print("-------", "FILLING CONTAINER", "-------")
     -- _container:getModData().refreshed = getGameTime():getWorldAgeHours();
 
     local containerItems = _container:getItems()
@@ -166,8 +167,8 @@ local function removeItemsFromContainer(_container, chance)
                         -- getPlayer():Say("Removing item: " .. itemName)
                         print("Removing item: " .. itemName)
                         _container:Remove(item)
-                    else
-                        print("Keeping item: " .. itemName)
+                        -- else
+                        -- print("Keeping item: " .. itemName)
                     end
                 end
             end
@@ -237,16 +238,16 @@ end
 
 local function checkRemoveItemsOnRefreshEnd(_iSInventoryPage, _state)
     if _state == "end" then
-        print("-------\nREFRESHING CONTAINER\n-------")
+        -- print("-------\nREFRESHING CONTAINER\n-------")
         checkRemoveItems(_iSInventoryPage);
     end
 end
 
 local function removeItemsOnFill(_roomtype, _containertype, _container)
-    print("-------\nFILLING CONTAINER\n-------")
+    -- print("-------\nFILLING CONTAINER\n-------")
     if _container and _container.getModData then
         _container:getModData().restocked = getGameTime():getWorldAgeHours();
-        print("RESTOCKING CONTAINER " .. _container:getModData().restocked)
+        -- print("RESTOCKING CONTAINER " .. _container:getModData().restocked)
     end
 
     if (PS.settings.ExtraItemRemoverPercent or 0) > 0 then
