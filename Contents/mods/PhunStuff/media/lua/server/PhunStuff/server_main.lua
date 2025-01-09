@@ -26,7 +26,7 @@ else
     end
 end
 
-function IodineTake(items, result, player)
+function CoughSyrupTake(items, result, player)
 
     player:getBodyDamage():setHasACold(false);
 end

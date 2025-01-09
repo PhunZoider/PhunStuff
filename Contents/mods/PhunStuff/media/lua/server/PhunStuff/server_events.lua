@@ -16,6 +16,36 @@ Events.OnServerStarted.Add(function()
     PS:refreshItemsToReduce()
 end)
 
+-- local climateManager
+-- local gt
+-- local duskTime
+-- local dawnTime
+-- local lastTime = 0
+-- Events.EveryTenMinutes.Add(function()
+--     if not climateManager and getClimateManager then
+--         climateManager = getClimateManager()
+--     end
+--     if not gt and getGameTime then
+--         gt = getGameTime()
+--     end
+--     if gt and climateManager then
+
+--         duskTime = climateManager:getDusk()
+--         dawnTime = climateManager:getDawn()
+--         local currentTime = gt:getTimeOfDay()
+--         if currentTime > duskTime or currentTime < dawnTime then
+--             -- its night
+--         end
+
+--         if lastTime ~= gt:getTimeOfDay() then
+--             lastTime = gt:getTimeOfDay()
+--             if lastTime > duskTime and lastTime < dawnTime then
+--                 PS:refreshItemsToReduce()
+--             end
+--         end
+--     end
+-- end)
+
 Events.OnClientCommand.Add(function(module, command, playerObj, arguments)
     if module == "PhunStuff" then
         if command == "mem" then

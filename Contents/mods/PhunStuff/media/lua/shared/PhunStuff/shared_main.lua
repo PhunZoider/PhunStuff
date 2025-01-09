@@ -111,6 +111,7 @@ function PS:refreshItemsToReduce()
 
     local lookingFor = {
         ["pkmncards."] = 80,
+        ["MCH.VhsTraining"] = 50,
         ["Book"] = 45,
         ["Plushie_"] = 50,
         ["Trolly"] = 90,
