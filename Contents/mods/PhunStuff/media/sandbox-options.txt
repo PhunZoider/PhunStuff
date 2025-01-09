@@ -5,7 +5,7 @@ option PhunStuff.FixBanditVoidSpawning
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffFixBanditVoidSpawning
+    translation = PhunStuff_FixBanditVoidSpawning
 }
 
 option PhunStuff.FixCedarHillRadioText
@@ -13,7 +13,7 @@ option PhunStuff.FixCedarHillRadioText
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffFixCedarHillRadioText
+    translation = PhunStuff_FixCedarHillRadioText
 }
 
 option PhunStuff.MaxGameHoursForEmptyContainer
@@ -33,7 +33,7 @@ option PhunStuff.ExtraItemRemoverPercent
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuffExtraItemRemoverPercent
+    translation = PhunStuff_ExtraItemRemoverPercent
 }
 
 option PhunStuff.ExtraItemRemoverKeys
@@ -41,7 +41,15 @@ option PhunStuff.ExtraItemRemoverKeys
     type = string,
     default = DUNNO=1,
     page = PhunStuff, 
-    translation = PhunStuffExtraItemRemoverPercent
+    translation = PhunStuff_ExtraItemRemoverKeys
+}
+
+option PhunStuff.MachinesFloppyFix
+{ 
+    type = boolean,
+    default = true,
+    page = PhunStuff,
+    translation = PhunStuff_MachinesFloppyFix
 }
 
 option PhunStuff.TicsUdderlyCompatabilityFix
@@ -49,7 +57,7 @@ option PhunStuff.TicsUdderlyCompatabilityFix
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffTicsUdderlyCompatabilityFix
+    translation = PhunStuff_TicsUdderlyCompatabilityFix
 }
 
 option PhunStuff.TicsPlayerConnectFix
@@ -57,7 +65,7 @@ option PhunStuff.TicsPlayerConnectFix
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffTicsUdderlyCompatabilityFix
+    translation = PhunStuff_TicsPlayerConnectFix
 }
 
 option PhunStuff.FixEmptyContainers
@@ -65,7 +73,7 @@ option PhunStuff.FixEmptyContainers
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffFixEmptyContainers
+    translation = PhunStuff_FixEmptyContainers
 }
 
 option PhunStuff.ATAChangeDistribution
@@ -73,7 +81,7 @@ option PhunStuff.ATAChangeDistribution
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuffATAChangeDistribution
+    translation = PhunStuff_ATAChangeDistribution
 }
 
 option PhunStuff.ATATrailerTSMegaSpawnChance
@@ -83,7 +91,7 @@ option PhunStuff.ATATrailerTSMegaSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuffATATrailerTSMegaSpawnChance
+    translation = PhunStuff_ATATrailerTSMegaSpawnChance
 }
 
 option PhunStuff.ATAPetyarbuiltSpawnChance
@@ -93,7 +101,7 @@ option PhunStuff.ATAPetyarbuiltSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuffATAPetyarbuiltSpawnChance
+    translation = PhunStuff_ATAPetyarbuiltSpawnChance
 }
 
 option PhunStuff.ATAPPetyarbuiltSleeperSpawnChance
@@ -103,7 +111,7 @@ option PhunStuff.ATAPPetyarbuiltSleeperSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuffATAPPetyarbuiltSleeperSpawnChance
+    translation = PhunStuff_ATAPPetyarbuiltSleeperSpawnChance
 }
 
 option PhunStuff.ATAPPetyarbuiltSleeperLongSpawnChance
@@ -113,7 +121,7 @@ option PhunStuff.ATAPPetyarbuiltSleeperLongSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuffATAPPetyarbuiltSleeperLongSpawnChance
+    translation = PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance
 }
 
 

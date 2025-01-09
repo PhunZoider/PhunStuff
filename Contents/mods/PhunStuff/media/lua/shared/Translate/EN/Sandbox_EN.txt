@@ -1,11 +1,11 @@
 Sandbox_EN = {
     Sandbox_PhunStuff = "PhunStuff"
 
-    Sandbox_FixBanditVoidSpawning = "Prevent Bandits from Spawning in Void"
-    Sandbox_FixBanditVoidSpawning_tooltip = "Probably fixed by now. Only use with bandits mod"
+    Sandbox_PhunStuff_FixBanditVoidSpawning = "Prevent Bandits from Spawning in Void"
+    Sandbox_PhunStuff_FixBanditVoidSpawning_tooltip = "Probably fixed by now. Only use with bandits mod"
 
-    Sandbox_FixCedarHillRadioText = "Fix Cedar Hill Radio Text"
-    Sandbox_FixCedarHillRadioText_tooltip = "Dont even use Cedar Hill anymore so probably false it"
+    Sandbox_PhunStuff_FixCedarHillRadioText = "Fix Cedar Hill Radio Text"
+    Sandbox_PhunStuff_FixCedarHillRadioText_tooltip = "Dont even use Cedar Hill anymore so probably false it"
 
     Sandbox_ExtraItemRemoverPercent = "Extra ItemRemover Percent"
     Sandbox_ExtraItemRemoverPercent_tooltip = "The chance that something from the next list will be removed from a container"
@@ -13,7 +13,37 @@ Sandbox_EN = {
     Sandbox_ExtraItemRemoverKeys = "Items to remove"
     Sandbox_ExtraItemRemoverKeys_tooltip = "A pipe separated list of items to check against"
 
-    Sandbox_FixEmptyContainers = "Fix to prevent empty orphaned containers"
-    Sandbox_FixEmptyContainers_tooltip = "Experimental attempt to cause empty refilled containers to still respawn"
+    Sandbox_PhunStuff_FixEmptyContainers = "Fix to prevent empty orphaned containers"
+    Sandbox_PhunStuff_FixEmptyContainers_tooltip = "Experimental attempt to cause empty refilled containers to still respawn"
+
+    Sandbox_PhunStuff_MaxGameHoursForEmptyContainer = "Max container empty hours"
+    Sandbox_PhunStuff_MaxGameHoursForEmptyContainer_tooltip = "Experimental attempt to trigger container refill if its been empty for longer than this"
+
+    Sandbox_PhunStuff_ExtraItemRemoverPercent = "Default extra item removal %"
+    Sandbox_PhunStuff_ExtraItemRemoverPercent_tooltip = "For the extra item removal list, reduce the spawn by this much"
+
+    Sandbox_PhunStuff_ExtraItemRemoverKeys = "Extra removal items"
+    Sandbox_PhunStuff_ExtraItemRemoverKeys_tooltip = "Semi colon delimited list of itemType=% to reduce"
+
+    Sandbox_PhunStuff_MachinesFloppyFix = "Machines floppy fix"
+    Sandbox_PhunStuff_MachinesFloppyFix_tooltip = "Make floppy disks single use. Requires restart"
+
+    Sandbox_PhunStuff_TicsUdderlyCompatabilityFix = "TICS udderly fix"
+    Sandbox_PhunStuff_TicsUdderlyCompatabilityFix_tooltip = "Try to improve compatability between udderly and tics"
+
+    Sandbox_PhunStuff_TicsPlayerConnectFix = "ATA Trailer Spawn"
+    Sandbox_PhunStuff_TicsPlayerConnectFix_tooltip = "Change spawn chance of this trailer"
+
+    Sandbox_PhunStuff_ATAChangeDistribution = "ATA Distribution"
+    Sandbox_PhunStuff_ATAChangeDistribution_tooltip = "Change distribution"
+
+    Sandbox_PhunStuff_ATAPetyarbuiltSpawnChance = "ATA Spawn Chance"
+    Sandbox_PhunStuff_ATAPetyarbuiltSpawnChance_tooltip = "Change Petyarbuilt spawn chance"
+
+    Sandbox_PhunStuff_ATAPPetyarbuiltSleeperSpawnChance = "ATA Sleeper Chance"
+    Sandbox_PhunStuff_ATAPPetyarbuiltSleeperSpawnChance_tooltip = "Change sleeper spawner chance"
+
+    Sandbox_PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance = "ATA Long Chance"
+    Sandbox_PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance_tooltip = "Change chance of Long Spawn chance"
 
 }

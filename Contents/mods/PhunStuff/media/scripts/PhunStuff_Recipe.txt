@@ -5,4 +5,12 @@ module PhuNStuffs
 		Base,
 	}
 
+    recipe Take Cough Syrup
+	{
+		CoughSyrup=1,
+		Result:CoughSyrup,
+		RemoveResultItem:true,
+		Time:30.0,
+		OnCreate:CoughSyrupTake,
+	}
 }

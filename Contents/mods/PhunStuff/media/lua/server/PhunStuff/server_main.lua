@@ -26,35 +26,40 @@ else
     end
 end
 
-if OnEat_Alcohol then
-    local oldEatAlcohol = OnEat_Alcohol;
-    function OnEat_Alcohol(food, player)
-        -- print("DT Logger: running OnEat_Alcohol");
-        -- print("Hunger change for: " .. food:getDisplayName() .. " is: " .. (food:getHungerChange() * 100) * -1)
-        -- print("Thirst change for: " .. food:getDisplayName() .. " is: " .. (food:getThirstChange() * 100) * -1)
-        local hungerChangeOverdose = food:getHungerChange() * 100 * -1;
-        local thirstChangeOverdose = food:getThirstChange() * 100 * -1;
+function IodineTake(items, result, player)
 
-        if DTOverdose then
-            -- OVERDOSE MECHANIC
-            DTOverdose.overdoseIncrease(player, hungerChangeOverdose + thirstChangeOverdose);
-        end
-
-        -- ALCOHOLIC TRAIT
-        -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
-        -- print("DT Logger: DTtimeSinceLastDrink value is " .. player:getModData().DTtimeSinceLastDrink);
-        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
-                                                   (food:getHungerChange() * 1000) * -1;
-        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
-                                                   (food:getThirstChange() * 1000) * -1;
-        player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
-                                                   (food:getAlcoholPower() * 100)
-        -- print("Alcohol power for: " .. food:getDisplayName() .. " is: " .. (food:getAlcoholPower() * 100))
-        player:getModData().DTtimeSinceLastDrink = 0;
-        -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
-        -- print("DT Logger: DTtimeSinceLastDrink value is " .. player:getModData().DTtimeSinceLastDrink);
-    end
+    player:getBodyDamage():setHasACold(false);
 end
+
+-- if OnEat_Alcohol then
+--     local oldEatAlcohol = OnEat_Alcohol;
+--     function OnEat_Alcohol(food, player)
+--         -- print("DT Logger: running OnEat_Alcohol");
+--         -- print("Hunger change for: " .. food:getDisplayName() .. " is: " .. (food:getHungerChange() * 100) * -1)
+--         -- print("Thirst change for: " .. food:getDisplayName() .. " is: " .. (food:getThirstChange() * 100) * -1)
+--         local hungerChangeOverdose = food:getHungerChange() * 100 * -1;
+--         local thirstChangeOverdose = food:getThirstChange() * 100 * -1;
+
+--         if DTOverdose then
+--             -- OVERDOSE MECHANIC
+--             DTOverdose.overdoseIncrease(player, hungerChangeOverdose + thirstChangeOverdose);
+--         end
+
+--         -- ALCOHOLIC TRAIT
+--         -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
+--         -- print("DT Logger: DTtimeSinceLastDrink value is " .. player:getModData().DTtimeSinceLastDrink);
+--         player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+--                                                    (food:getHungerChange() * 1000) * -1;
+--         player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+--                                                    (food:getThirstChange() * 1000) * -1;
+--         player:getModData().DTalcoholicTrait = (player:getModData().DTalcoholicTrait or 0) -
+--                                                    (food:getAlcoholPower() * 100)
+--         -- print("Alcohol power for: " .. food:getDisplayName() .. " is: " .. (food:getAlcoholPower() * 100))
+--         player:getModData().DTtimeSinceLastDrink = 0;
+--         -- print("DT Logger: DTalcoholicTrait value is " .. player:getModData().DTalcoholicTrait);
+--         -- print("DT Logger: DTtimeSinceLastDrink value is " .. player:getModData().DTtimeSinceLastDrink);
+--     end
+-- end
 
 function PhunStuffGoldCrafting_OnCreate(items, result, player)
     local chance = ZombRand(1, 100)
@@ -99,8 +104,10 @@ local toRemove = {
 for i = 0, allRecipes:size() - 1 do
     local recipe = allRecipes:get(i)
     if recipe:getModule() and recipe:getModule():getName() == "MCH" then
-        if toRemove[recipe:getName()] then
-            recipe:setRemoveResultItem(true)
+        if SandboxVars.PhunStuff.MachinesFloppyFix then
+            if toRemove[recipe:getName()] then
+                recipe:setRemoveResultItem(true)
+            end
         end
     end
 

@@ -30,4 +30,20 @@ module Base
 		DisplayName	=	Stairs Out Sign,
 		Icon	=	Paper,
 	}
+
+    item CoughSyrup {
+        DisplayCategory = FirstAid,
+        Weight  =   0.02,
+        Type    =   Drainable,
+        UseDelta    =   0.3,
+        UseWhileEquipped    =   FALSE,
+        DisplayName =  Cough Syrup,
+        Icon    =   CoughSyrup,
+        Tooltip = Tooltip_Item_CoughSyrup,
+        StaticModel = PillBottle,
+        OnEat = OnEat_CoughSyrup,
+        Medical = TRUE,
+        DaysTotallyRotten   = 4,
+        DaysFresh           = 1,
+    }
 }
