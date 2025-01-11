@@ -46,4 +46,16 @@ Sandbox_EN = {
     Sandbox_PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance = "ATA Long Chance"
     Sandbox_PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance_tooltip = "Change chance of Long Spawn chance"
 
+    Sandbox_PhunStuff_MachinesXPEngineeringDisk = "Machines: Engineer Disk Xp"
+    Sandbox_PhunStuff_MachinesXPEngineeringDisk_tooltip = "Enter the amount of xp for training on the engineering disk"
+
+    Sandbox_PhunStuff_MachinesXPEngineeringMax = "Machines: Engineering Max Level"
+    Sandbox_PhunStuff_MachinesXPEngineeringMax_tooltip = "The max level you can train at engineering with disks"
+
+    Sandbox_PhunStuff_DaySpeed= "Day Speed"
+    Sandbox_PhunStuff_DaySpeed_tooltip = "Speed during the daytime 1=15 mins"
+
+    Sandbox_PhunStuff_NightSpeed= "Night Speed"
+    Sandbox_PhunStuff_NightSpeed_tooltip = "Speed during night time 1=15 mins"
+
 }

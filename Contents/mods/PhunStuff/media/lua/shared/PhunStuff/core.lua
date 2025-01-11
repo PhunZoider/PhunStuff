@@ -2,10 +2,16 @@ PhunStuff = {
     name = "PhunStuff",
     inied = false,
     commands = {
-        refillContainer = "PhunStuffRefillContainer"
+        onStart = "PhunStuffOnStart",
+        refillContainer = "PhunStuffRefillContainer",
+        daytimeStart = "PhunStuffDaytimeStart",
+        nightTimeStart = "PhunStuffNightTimeStart"
     },
     recipeOverrides = {},
-    events = {},
+    events = {
+        OnPhunNight = "OnPhunNight",
+        OnPhunDay = "OnPhunDay"
+    },
     itemOverrides = {
         ["FunctionalAppliances.FABubBeerBottle"] = {
             DisplayCategory = "FoodA"
@@ -56,6 +62,9 @@ function Core:ini()
     if not self.inied then
         self.inied = true
         self.data = ModData.getOrCreate(self.name)
+        if isClient() then
+            sendClientCommand(self.name, self.commands.onStart, {})
+        end
     end
 end
 

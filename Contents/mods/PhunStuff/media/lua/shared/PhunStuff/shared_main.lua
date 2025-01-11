@@ -1,30 +1,34 @@
-require "TsarSpawnList"
 require "PhunStuff/core"
 
 local PS = PhunStuff
 
-local VehicleZoneDistribution = VehicleZoneDistribution or {};
+if getActivatedMods():contains("ATA_Petyarbuilt") then
+    require "TsarSpawnList"
 
-if PS.settings.ATAChangeDistribution then
+    local VehicleZoneDistribution = VehicleZoneDistribution or {};
 
-    if VehicleZoneDistribution.bigtrailerparkinglot and VehicleZoneDistribution.bigtrailerparkinglot.vehicles then
-        VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.TrailerTSMega"] = {
-            index = -1,
-            spawnChance = PS.settings.ATATrailerTSMegaSpawnChance or 1
-        };
-        VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuilt"] = {
-            index = -1,
-            spawnChance = PS.settings.ATAPetyarbuiltSpawnChance or 1
-        };
-        VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuiltSleeper"] = {
-            index = -1,
-            spawnChance = PS.settings.ATAPPetyarbuiltSleeperSpawnChance or 1
-        };
-        VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuiltSleeperLong"] = {
-            index = -1,
-            spawnChance = PS.settings.ATAPPetyarbuiltSleeperLongSpawnChance or 1
-        };
+    if PS.settings.ATAChangeDistribution then
+
+        if VehicleZoneDistribution.bigtrailerparkinglot and VehicleZoneDistribution.bigtrailerparkinglot.vehicles then
+            VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.TrailerTSMega"] = {
+                index = -1,
+                spawnChance = PS.settings.ATATrailerTSMegaSpawnChance or 1
+            };
+            VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuilt"] = {
+                index = -1,
+                spawnChance = PS.settings.ATAPetyarbuiltSpawnChance or 1
+            };
+            VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuiltSleeper"] = {
+                index = -1,
+                spawnChance = PS.settings.ATAPPetyarbuiltSleeperSpawnChance or 1
+            };
+            VehicleZoneDistribution.bigtrailerparkinglot.vehicles["Base.ATAPetyarbuiltSleeperLong"] = {
+                index = -1,
+                spawnChance = PS.settings.ATAPPetyarbuiltSleeperLongSpawnChance or 1
+            };
+        end
     end
+
 end
 
 local oldHordeNightTick = HN_CheckSpawnHordeZombies
@@ -71,14 +75,36 @@ end
 
 local itemsToReduceFrequencyOf = {}
 
+local function isInSafehouse(square)
+
+    local safehouses = SafeHouse:getSafehouseList()
+    for index = 1, safehouses:size(), 1 do
+        local safehouse = safehouses:get(index - 1)
+        if square:getX() > safehouse:getX() and square:getX() < safehouse:getX2() then
+            if square:getY() > safehouse:getY() and square:getY() < safehouse:getY2() then
+                return true
+            end
+        end
+    end
+end
+
 function PS:refillContainer(player, args)
     local square = getSquare(args.x, args.y, args.z)
     if square then
+        if isInSafehouse(square) then
+            print("In safehouse, not refilling")
+            return
+        else
+            -- print("Not in safehouse, refilling")
+        end
         local objs = square:getObjects()
         for i = 0, objs:size() - 1 do
             local obj = objs:get(i)
+            -- print("getting obj")
             local data = obj:getModData()
+            -- print("Checking data")
             if data and data.emptied ~= nil then
+                -- print("Refilling container")
                 data.emptied = 0
                 local hasContainers = obj.getContainerCount and obj:getContainerCount() > 0
                 local hasItemContainer = obj.getItemContainer and obj:getItemContainer()
@@ -90,9 +116,16 @@ function PS:refillContainer(player, args)
                         if container then
                             ItemPickerJava.fillContainer(container, player)
                         end
+                        if isServer() then
+                            obj:transmitUpdatedSpriteToClients()
+                        end
                     end
                 elseif hasItemContainer then
                     ItemPickerJava.fillContainer(hasItemContainer, player)
+                    if isServer() then
+                        hasItemContainer:transmitUpdatedSpriteToClients()
+                    end
+
                 end
 
             end
@@ -111,7 +144,13 @@ function PS:refreshItemsToReduce()
 
     local lookingFor = {
         ["pkmncards."] = 80,
-        ["MCH.VhsTraining"] = 50,
+        ["MCH.VhsTraining1"] = 30, -- electrical
+        ["MCH.VhsTraining2"] = 20, -- First Aid
+        ["MCH.VhsTraining3"] = 70, -- Metal
+        ["MCH.VhsTraining4"] = 50, -- Mechanic
+        ["MCH.VhsTraining5"] = 70, -- tailoring
+        ["MCH.VhsTraining6"] = 50, -- cooking
+        ["MCH.VhsTraining7"] = 1, -- Engineering
         ["Book"] = 45,
         ["Plushie_"] = 50,
         ["Trolly"] = 90,
@@ -141,7 +180,7 @@ function PS:refreshItemsToReduce()
         end
     end
 
-    PS:debug("======", "Looking for: ", lookingFor, "======")
+    self:debug("======", "Looking for: ", lookingFor, "======")
 
     local items = getScriptManager():getAllItems()
     for i = 0, items:size() - 1 do
@@ -223,13 +262,22 @@ local function checkEmptyContainer(container, parent)
     local md = parent:getModData()
     local hours = PS.settings.MaxGameHoursForEmptyContainer or 0
 
+    -- local hasContainers = parent.getContainerCount and parent:getContainerCount() > 0
+    -- local hasItemContainer = parent.getItemContainer and parent:getItemContainer()
+
     if hours > 0 then
         if container:isEmpty() then
 
             container:setExplored(true)
             container:setHasBeenLooted(true)
+
             if not md.emptied or md.emptied == 0 then
-                md.emptied = getGameTime():getWorldAgeHours()
+
+                if not isInSafehouse(parent) then
+                    md.emptied = getGameTime():getWorldAgeHours()
+                else
+                    md.emptied = -1
+                end
                 parent:transmitModData()
                 -- print("CHECK EMPTY CONTAINER", tostring(container.ID))
                 -- print(" - empty container was not marked. Set to" .. tostring(md.emptied))
@@ -290,3 +338,4 @@ function PS:checkRemoveItems(inventoryPage)
     end
 
 end
+

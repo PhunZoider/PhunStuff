@@ -168,6 +168,26 @@ end)
 --     end
 -- end);
 -- end
+Events.OnServerCommand.Add(function(module, command, arguments)
+    if module == PS.name then
+        if command == PS.commands.nightTimeStart then
+            print("==================================")
+            print("Setting night speed from " .. tostring(SandboxVars.DayLength) .. " to " .. PS.settings.NightSpeed)
+            print("==================================")
+            getSandboxOptions():getOptionByName("DayLength"):setValue(PS.settings.NightSpeed)
+            -- getSandboxOptions():set("DayLength", PS.settings.NightSpeed)
+            getSandboxOptions():applySettings()
+        elseif command == PS.commands.daytimeStart then
+            print("==================================")
+            print("Setting day speed from " .. tostring(SandboxVars.DayLength) .. " to " .. PS.settings.DaySpeed)
+            print("==================================")
+            getSandboxOptions():getOptionByName("DayLength"):setValue(PS.settings.DaySpeed)
+            -- getSandboxOptions():set("DayLength", PS.settings.NightSpeed)
+            getSandboxOptions():applySettings()
+        end
+    end
+end)
+
 Events.OnRefreshInventoryWindowContainers.Add(function(page, state)
     if state == "end" and PS.settings.FixEmptyContainers then
         PS:checkRemoveItems(page)
@@ -211,3 +231,5 @@ Events.OnInitGlobalModData.Add(function()
     end
 
 end)
+
+-- nxcompare fix

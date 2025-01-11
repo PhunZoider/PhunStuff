@@ -1,5 +1,63 @@
 local PS = PhunStuff
 local oldfn = nil
+
+local climateManager
+local gt
+local duskTime
+local dawnTime
+local lastTime = 0
+local isNight = nil
+function PS:calculateDawnDusk()
+    if not climateManager and getClimateManager then
+        climateManager = getClimateManager()
+    end
+    if not gt and getGameTime then
+        gt = getGameTime()
+    end
+    if gt and climateManager then
+
+        local season = climateManager:getSeason()
+        if season then
+            local time = getGameTime():getTimeOfDay()
+            dawnTime = season:getDawn()
+            duskTime = season:getDusk() + 2
+        end
+
+    end
+end
+
+function PS:setIsNight()
+    if duskTime and dawnTime then
+        local currentTime = gt:getTimeOfDay()
+        local night = currentTime > duskTime or currentTime < dawnTime
+        if night ~= isNight then
+            if night then
+                sendServerCommand(PS.name, PS.commands.nightTimeStart, {})
+                if PS.settings.NightSpeed then
+                    print("==================================")
+                    print("Setting night speed from " .. tostring(SandboxVars.DayLength) .. " to " ..
+                              PS.settings.NightSpeed)
+                    print("==================================")
+                    getSandboxOptions():getOptionByName("DayLength"):setValue(PS.settings.NightSpeed)
+                    -- getSandboxOptions():set("DayLength", PS.settings.NightSpeed)
+                    getSandboxOptions():applySettings()
+                end
+            else
+                sendServerCommand(PS.name, PS.commands.daytimeStart, {})
+                if PS.settings.DaySpeed then
+                    print("==================================")
+                    print("Setting day speed from " .. tostring(SandboxVars.DayLength) .. " to " .. PS.settings.DaySpeed)
+                    print("==================================")
+                    getSandboxOptions():getOptionByName("DayLength"):setValue(PS.settings.DaySpeed)
+                    -- getSandboxOptions():set("DayLength", PS.settings.DaySpeed)
+                    getSandboxOptions():applySettings()
+                end
+            end
+            isNight = night
+        end
+    end
+end
+
 if OnEat_Zomboxivir then
 
     oldfn = OnEat_Zomboxivir;
@@ -113,6 +171,21 @@ for i = 0, allRecipes:size() - 1 do
 
 end
 
+local function giveTrainingXP(player, perk, xpAmount, fatigueIncrease, max)
+    if player:getPerkLevel(perk) >= (max or 5) then
+        player:Say("I already know this.");
+    else
+        player:getXp():AddXP(perk, xpAmount);
+        player:getStats():setFatigue(player:getStats():getFatigue() + fatigueIncrease);
+    end
+end
+
+if PS.settings.MachinesXPEngineeringDisk and PS.settings.MachinesXPEngineeringDisk > 0 then
+    local max = PS.settings.MachinesXPEngineeringMax or 5
+    function Recipe.OnGiveXP.EngineerTrain(recipe, ingredients, result, player)
+        giveTrainingXP(player, Perks.Engineering, PS.settings.MachinesXPEngineeringDisk, 0.1, max);
+    end
+end
 -- MACHINES 
 -- if Recipe.OnGiveXP.ElectricalTrain then
 

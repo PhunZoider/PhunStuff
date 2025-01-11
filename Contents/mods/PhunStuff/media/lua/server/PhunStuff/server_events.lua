@@ -14,42 +14,38 @@ end)
 Events.OnServerStarted.Add(function()
     PS:tweakRecipees()
     PS:refreshItemsToReduce()
+    PS:calculateDawnDusk()
 end)
 
--- local climateManager
--- local gt
--- local duskTime
--- local dawnTime
--- local lastTime = 0
--- Events.EveryTenMinutes.Add(function()
---     if not climateManager and getClimateManager then
---         climateManager = getClimateManager()
---     end
---     if not gt and getGameTime then
---         gt = getGameTime()
---     end
---     if gt and climateManager then
+local climateManager
+local gt
+local duskTime
+local dawnTime
+local lastTime = 0
+local isNight = nil
+Events.EveryHours.Add(function()
+    PS:calculateDawnDusk()
+end)
 
---         duskTime = climateManager:getDusk()
---         dawnTime = climateManager:getDawn()
---         local currentTime = gt:getTimeOfDay()
---         if currentTime > duskTime or currentTime < dawnTime then
---             -- its night
---         end
+Events.EveryDays.Add(function()
+    print("EveryDays")
+    PS:calculateDawnDusk()
+end)
 
---         if lastTime ~= gt:getTimeOfDay() then
---             lastTime = gt:getTimeOfDay()
---             if lastTime > duskTime and lastTime < dawnTime then
---                 PS:refreshItemsToReduce()
---             end
---         end
---     end
--- end)
+Events.EveryOneMinute.Add(function()
+    PS:setIsNight()
+end)
 
 Events.OnClientCommand.Add(function(module, command, playerObj, arguments)
     if module == "PhunStuff" then
         if command == "mem" then
             PS:logMemoryStuff()
+        elseif command == PS.commands.onStart then
+            if isNight == true then
+                sendServerCommand(playerObj, PS.name, PS.commands.nightTimeStart, {})
+            elseif isNight == false then
+                sendServerCommand(playerObj, PS.name, PS.commands.daytimeStart, {})
+            end
         elseif command == PS.commands.refillContainer then
             PS:refillContainer(playerObj, arguments)
         elseif command == "empty" then

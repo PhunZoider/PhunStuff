@@ -5,7 +5,7 @@ option PhunStuff.FixBanditVoidSpawning
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_FixBanditVoidSpawning
+    translation = PhunStuff_FixBanditVoidSpawning,
 }
 
 option PhunStuff.FixCedarHillRadioText
@@ -13,7 +13,7 @@ option PhunStuff.FixCedarHillRadioText
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_FixCedarHillRadioText
+    translation = PhunStuff_FixCedarHillRadioText,
 }
 
 option PhunStuff.MaxGameHoursForEmptyContainer
@@ -23,7 +23,7 @@ option PhunStuff.MaxGameHoursForEmptyContainer
     min = 0,
     max = 99999,
     page = PhunStuff, 
-    translation = PhunStuff_MaxGameHoursForEmptyContainer
+    translation = PhunStuff_MaxGameHoursForEmptyContainer,
 }
 
 option PhunStuff.ExtraItemRemoverPercent
@@ -33,7 +33,7 @@ option PhunStuff.ExtraItemRemoverPercent
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuff_ExtraItemRemoverPercent
+    translation = PhunStuff_ExtraItemRemoverPercent,
 }
 
 option PhunStuff.ExtraItemRemoverKeys
@@ -41,7 +41,7 @@ option PhunStuff.ExtraItemRemoverKeys
     type = string,
     default = DUNNO=1,
     page = PhunStuff, 
-    translation = PhunStuff_ExtraItemRemoverKeys
+    translation = PhunStuff_ExtraItemRemoverKeys,
 }
 
 option PhunStuff.MachinesFloppyFix
@@ -49,7 +49,7 @@ option PhunStuff.MachinesFloppyFix
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_MachinesFloppyFix
+    translation = PhunStuff_MachinesFloppyFix,
 }
 
 option PhunStuff.TicsUdderlyCompatabilityFix
@@ -57,7 +57,7 @@ option PhunStuff.TicsUdderlyCompatabilityFix
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_TicsUdderlyCompatabilityFix
+    translation = PhunStuff_TicsUdderlyCompatabilityFix,
 }
 
 option PhunStuff.TicsPlayerConnectFix
@@ -65,7 +65,7 @@ option PhunStuff.TicsPlayerConnectFix
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_TicsPlayerConnectFix
+    translation = PhunStuff_TicsPlayerConnectFix,
 }
 
 option PhunStuff.FixEmptyContainers
@@ -73,7 +73,7 @@ option PhunStuff.FixEmptyContainers
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_FixEmptyContainers
+    translation = PhunStuff_FixEmptyContainers,
 }
 
 option PhunStuff.ATAChangeDistribution
@@ -81,7 +81,7 @@ option PhunStuff.ATAChangeDistribution
     type = boolean,
     default = true,
     page = PhunStuff,
-    translation = PhunStuff_ATAChangeDistribution
+    translation = PhunStuff_ATAChangeDistribution,
 }
 
 option PhunStuff.ATATrailerTSMegaSpawnChance
@@ -91,7 +91,7 @@ option PhunStuff.ATATrailerTSMegaSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuff_ATATrailerTSMegaSpawnChance
+    translation = PhunStuff_ATATrailerTSMegaSpawnChance,
 }
 
 option PhunStuff.ATAPetyarbuiltSpawnChance
@@ -101,7 +101,7 @@ option PhunStuff.ATAPetyarbuiltSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuff_ATAPetyarbuiltSpawnChance
+    translation = PhunStuff_ATAPetyarbuiltSpawnChance,
 }
 
 option PhunStuff.ATAPPetyarbuiltSleeperSpawnChance
@@ -111,7 +111,7 @@ option PhunStuff.ATAPPetyarbuiltSleeperSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuff_ATAPPetyarbuiltSleeperSpawnChance
+    translation = PhunStuff_ATAPPetyarbuiltSleeperSpawnChance,
 }
 
 option PhunStuff.ATAPPetyarbuiltSleeperLongSpawnChance
@@ -121,7 +121,48 @@ option PhunStuff.ATAPPetyarbuiltSleeperLongSpawnChance
     min = 0,
     max = 100,
     page = PhunStuff, 
-    translation = PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance
+    translation = PhunStuff_ATAPPetyarbuiltSleeperLongSpawnChance,
 }
+
+option PhunStuff.MachinesXPEngineeringDisk
+{ 
+    type = integer, 
+    default = 200, 
+    min = 0,
+    max = 1000,
+    page = PhunStuff, 
+    translation = PhunStuff_MachinesXPEngineeringDisk,
+}
+
+option PhunStuff.MachinesXPEngineeringMax
+{ 
+    type = integer, 
+    default = 5, 
+    min = 0,
+    max = 10,
+    page = PhunStuff, 
+    translation = PhunStuff_MachinesXPEngineeringMax,
+}
+
+option PhunStuff.DaySpeed
+{ 
+    type = integer, 
+    default = 4, 
+    min = 1,
+    max = 25,
+    page = PhunStuff, 
+    translation = PhunStuff_DaySpeed,
+}
+
+option PhunStuff.NightSpeed
+{ 
+    type = integer, 
+    default = 3, 
+    min = 1,
+    max = 25,
+    page = PhunStuff, 
+    translation = PhunStuff_NightSpeed,
+}
+
 
 
