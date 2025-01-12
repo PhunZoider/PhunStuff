@@ -51,6 +51,7 @@ PhunStuff = {
 
 local Core = PhunStuff
 Core.settings = SandboxVars[Core.name] or {}
+Core.isLocal = not isClient() and not isServer() and not isCoopHost()
 
 for _, event in pairs(Core.events or {}) do
     if not Events[event] then

@@ -14,10 +14,10 @@ function PS:calculateDawnDusk()
     if not gt and getGameTime then
         gt = getGameTime()
     end
-    if gt and climateManager then
+    if gt and climateManager and climateManager.getSeason then
 
         local season = climateManager:getSeason()
-        if season then
+        if season and season.getDawn then
             local time = getGameTime():getTimeOfDay()
             dawnTime = season:getDawn()
             duskTime = season:getDusk() + 2

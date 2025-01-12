@@ -168,6 +168,13 @@ end)
 --     end
 -- end);
 -- end
+
+Events.OnCreatePlayer.Add(function(player)
+    if PS.isLocal then
+        PS:calculateDawnDusk()
+    end
+end)
+
 Events.OnServerCommand.Add(function(module, command, arguments)
     if module == PS.name then
         if command == PS.commands.nightTimeStart then
