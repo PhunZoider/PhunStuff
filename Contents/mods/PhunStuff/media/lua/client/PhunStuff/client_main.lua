@@ -6,6 +6,18 @@ if isServer() then
 end
 local PS = PhunStuff
 
+-- Fix for NUC keeping items
+if ISFixNuc then
+    local oldfn = ISFixNuc.perform
+    function ISFixNuc:perform()
+        oldfn(self)
+        if self.ItemName ~= "ElectricWire" then
+            self.character:getInventory():RemoveOneOf(self.ItemName)
+        end
+
+    end
+end
+
 -- BANDIT SPAWNING IN VOID
 
 if PS.settings.FixBanditVoidSpawning then

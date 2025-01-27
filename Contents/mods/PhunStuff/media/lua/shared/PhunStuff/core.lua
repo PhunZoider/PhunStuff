@@ -3,15 +3,10 @@ PhunStuff = {
     inied = false,
     commands = {
         onStart = "PhunStuffOnStart",
-        refillContainer = "PhunStuffRefillContainer",
-        daytimeStart = "PhunStuffDaytimeStart",
-        nightTimeStart = "PhunStuffNightTimeStart"
+        refillContainer = "PhunStuffRefillContainer"
     },
     recipeOverrides = {},
-    events = {
-        OnPhunNight = "OnPhunNight",
-        OnPhunDay = "OnPhunDay"
-    },
+    events = {},
     itemOverrides = {
         ["FunctionalAppliances.FABubBeerBottle"] = {
             DisplayCategory = "FoodA"

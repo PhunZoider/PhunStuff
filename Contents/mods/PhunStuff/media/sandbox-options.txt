@@ -144,25 +144,6 @@ option PhunStuff.MachinesXPEngineeringMax
     translation = PhunStuff_MachinesXPEngineeringMax,
 }
 
-option PhunStuff.DaySpeed
-{ 
-    type = integer, 
-    default = 4, 
-    min = 1,
-    max = 25,
-    page = PhunStuff, 
-    translation = PhunStuff_DaySpeed,
-}
-
-option PhunStuff.NightSpeed
-{ 
-    type = integer, 
-    default = 3, 
-    min = 1,
-    max = 25,
-    page = PhunStuff, 
-    translation = PhunStuff_NightSpeed,
-}
 
 
 

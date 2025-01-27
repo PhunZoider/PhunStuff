@@ -338,4 +338,3 @@ function PS:checkRemoveItems(inventoryPage)
     end
 
 end
-
