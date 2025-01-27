@@ -18,6 +18,23 @@ if ISFixNuc then
     end
 end
 
+local oldAddLineInChat = ISChat.addLineInChat
+function ISChat.addLineInChat(message, tabID)
+    if luautils.stringEnds(message:getText(), "[img=music]") then
+        return
+    end
+    oldAddLineInChat(message, tabID)
+end
+
+if Machines and Machines.assignNameBasedOnSprite then
+    local oldMachinesAssignName = Machines.assignNameBasedOnSprite
+    function Machines.assignNameBasedOnSprite(object)
+        if object and object.getSprite then
+            oldMachinesAssignName(object);
+        end
+    end
+end
+
 -- BANDIT SPAWNING IN VOID
 
 if PS.settings.FixBanditVoidSpawning then
